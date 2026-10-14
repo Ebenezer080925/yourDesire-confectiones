@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery — Yourfood Confectiones</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="gallery.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="index.html" class="logo-link">
+      <img src="Dao confectiones Logo.png" alt="Dao Confectiones logo" class="logo-img">
+      <span class="logo">Dao <span>Confectiones</span></span>
+    </a>
+    <a class="back-link" href="index.html">← Back to site</a>
+  </div>
+</header>
+
+<div class="wrap gallery-head">
+  <h1 id="gallery-title">Gallery</h1>
+  <p id="gallery-intro">Loading…</p>
+</div>
+
+<!-- Filled in automatically by gallery.js based on the category in the URL -->
+<div class="wrap gallery-grid" id="gallery-grid"></div>
+
+<div class="wrap gallery-cta">
+  <p>See something close to what you want? Tell Stones and we'll make it yours.</p>
+  <a class="btn-primary" href="chat.html">Chat with Stones</a>
+</div>
+
+<footer class="wrap">© <span id="year"></span> Dao Confectiones</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase_config.js"></script>
+<script src="gallery.js"></script>
+<script>
+  document.querySelector('footer #year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

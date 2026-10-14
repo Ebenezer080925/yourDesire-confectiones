@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ask Stones — Dao Confectiones</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- All styling lives in this separate file -->
+<link rel="stylesheet" href="chat.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo-link" href="index.html">
+      <img src="Dao confectiones Logo.png" alt="Dao Confectiones logo" class="logo-img">
+      <span class="logo">Dao <span>Confectiones</span></span>
+    </a>
+    <a class="back-link" href="index.html">← Back to site</a>
+  </div>
+</header>
+
+<div class="wrap chat-shell">
+  <div class="chat-intro">
+    <div class="chat-avatar">💬</div>
+    <div>
+      <h1>Stones</h1>
+      <p>Ask about the menu, hours, or start a booking or catering request.</p>
+    </div>
+  </div>
+
+  <!-- New messages get inserted here by chat.js as the conversation happens -->
+  <div class="messages" id="messages">
+    <div class="msg bot">Hi, I'm Stones 👋 Ask me about our cakes, bread, snacks, or catering — or tell me you'd like to make a booking.</div>
+  </div>
+
+  <div class="composer">
+    <input type="text" id="chat-input" placeholder="Type a message…" autocomplete="off">
+    <button id="send-btn">Send</button>
+  </div>
+
+  <div class="setup-note" id="setup-note">
+    Not connected yet — paste your n8n production webhook URL into chat.js to go live.
+  </div>
+</div>
+
+<!-- All the chat logic (sending messages, showing replies) lives in this separate file -->
+<script src="chat.js"></script>
+
+</body>
+</html>

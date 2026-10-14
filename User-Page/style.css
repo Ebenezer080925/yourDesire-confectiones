@@ -1,0 +1,504 @@
+/* =====================================================
+   BRAND COLORS
+   Change these and the whole site re-themes automatically.
+   ===================================================== */
+:root {
+  --white: #FFFFFF;
+  --paper: #F7F5FA;      /* main page background */
+  --panel: #F0EBF7;      /* card backgrounds */
+  --black: #17151C;      /* main text / dark panels */
+  --purple: #5B2C82;     /* primary brand color (buttons, links) */
+  --purple-deep: #401D5E;
+  --lilac: #C9A9E0;      /* soft accent */
+  --line: rgba(23, 21, 28, 0.12); /* subtle borders */
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; } /* smooth-scrolls when clicking #links */
+
+body {
+  background: var(--paper);
+  color: var(--black);
+  font-family: 'Work Sans', sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+a { color: inherit; }
+
+/* Centers content and caps its width on big screens */
+.wrap {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* =====================================================
+   HEADER / NAV BAR
+   ===================================================== */
+header {
+  position: sticky; /* stays pinned to top while scrolling */
+  top: 0;
+  z-index: 50;
+  background: rgba(251, 246, 236, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--black);
+}
+
+.logo-img {
+  height: 34px;
+  width: auto;
+  display: block;
+}
+
+.logo {
+  font-family: 'Fraunces', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.logo span { color: var(--purple); }
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+  font-size: 0.95rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
+.nav-links a:hover { opacity: 1; }
+
+.nav-cta {
+  background: var(--black);
+  color: var(--paper);
+  padding: 10px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Hides text nav links on small screens (mobile) */
+@media (max-width: 780px) {
+  .nav-links { display: none; }
+  .logo-img { height: 28px; }
+}
+
+/* =====================================================
+   HERO (TOP BANNER)
+   ===================================================== */
+.hero {
+  padding: 88px 0 56px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr; /* text column | image column */
+  gap: 48px;
+  align-items: center;
+}
+
+.hero-eyebrow {
+  color: var(--purple-deep);
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  font-size: clamp(2.4rem, 4.2vw, 3.6rem); /* scales with screen size */
+  max-width: 11ch;
+  margin-bottom: 24px;
+}
+
+.hero p {
+  max-width: 46ch;
+  font-size: 1.08rem;
+  opacity: 0.85;
+  margin-bottom: 32px;
+}
+
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+.btn-primary {
+  background: var(--purple);
+  color: var(--paper);
+  padding: 14px 28px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+
+.btn-primary:hover { transform: translateY(-1px); }
+
+.btn-ghost {
+  border: 1.5px solid var(--black);
+  padding: 14px 28px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-block;
+}
+
+/* The rotating hero photo box */
+.hero-visual {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: 28px;
+  overflow: hidden;
+  background: var(--black);
+}
+
+/* All 4 images stack on top of each other; JS shows one at a time */
+.hero-visual img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0;
+  transition: opacity 1.2s ease; /* the crossfade effect */
+}
+
+.hero-visual img.active {
+  opacity: 1;
+}
+
+.hero-tag {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  background: var(--paper);
+  color: var(--black);
+  padding: 10px 16px;
+  border-radius: 14px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  max-width: 190px;
+}
+
+@media (max-width: 780px) {
+  .hero { grid-template-columns: 1fr; padding-top: 56px; }
+  .hero-visual { aspect-ratio: 16/10; }
+}
+
+/* =====================================================
+   DISPLAY CASE (menu category cards: Cakes / Bread / Snacks / Catering)
+   ===================================================== */
+.case {
+  padding: 40px 0 20px;
+}
+
+.case-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 28px;
+  gap: 16px;
+}
+
+.case-head h2 { font-size: clamp(1.7rem, 2.6vw, 2.2rem); }
+
+.case-head p { opacity: 0.7; max-width: 40ch; }
+
+.case-strip {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto; /* lets you scroll sideways through the cards */
+  padding-bottom: 12px;
+  scrollbar-width: thin;
+}
+
+.case-card {
+  flex: 0 0 250px; /* fixed width, won't shrink */
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 0 0 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow: hidden;
+  text-decoration: none; /* case-card is a link now, remove underline */
+  color: inherit;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.case-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--purple);
+}
+
+.case-photo {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.case-card h3, .case-card p, .case-card .note {
+  padding: 0 22px; /* re-adds side padding just for the text */
+}
+
+.case-card h3 { font-size: 1.15rem; }
+
+.case-card p { font-size: 0.92rem; opacity: 0.75; }
+
+.case-card .note {
+  margin-top: auto; /* pushes this line to the bottom of the card */
+  font-size: 0.8rem;
+  color: var(--purple-deep);
+  font-weight: 500;
+}
+
+/* =====================================================
+   ABOUT SECTION
+   ===================================================== */
+.about {
+  padding: 64px 0;
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 48px;
+  align-items: center;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.about h2 { font-size: clamp(1.7rem, 2.6vw, 2.2rem); margin-bottom: 18px; }
+
+.about p { opacity: 0.82; max-width: 52ch; }
+
+.about-figure {
+  aspect-ratio: 1;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.about-figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 780px) {
+  .about { grid-template-columns: 1fr; }
+  .about-figure { order: -1; max-width: 220px; }
+}
+
+/* =====================================================
+   CATERING SECTION
+   ===================================================== */
+.catering {
+  padding: 64px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.catering h2 { font-size: clamp(1.7rem, 2.6vw, 2.2rem); margin-bottom: 16px; }
+
+.catering p { opacity: 0.82; margin-bottom: 20px; max-width: 46ch; }
+
+.catering-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.catering-list li {
+  display: flex;
+  gap: 10px;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+.catering-list li::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--lilac);
+  margin-top: 8px;
+  flex: none;
+}
+
+.catering-panel {
+  background: var(--black);
+  color: var(--paper);
+  border-radius: 24px;
+  padding: 36px;
+}
+
+.catering-panel h3 { font-family: 'Fraunces', serif; font-size: 1.4rem; margin-bottom: 10px; }
+
+.catering-panel p { opacity: 0.85; font-size: 0.95rem; margin-bottom: 22px; }
+
+@media (max-width: 780px) {
+  .catering { grid-template-columns: 1fr; }
+}
+
+/* =====================================================
+   "ASK STONES" TEASER SECTION
+   ===================================================== */
+.stones {
+  padding: 64px 0 80px;
+  text-align: center;
+}
+
+.stones-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 48px 32px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.stones-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(155deg, var(--purple), var(--black));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  margin: 0 auto 18px;
+}
+
+.stones h2 { font-size: clamp(1.5rem, 2.4vw, 1.9rem); margin-bottom: 12px; }
+
+.stones p { opacity: 0.8; max-width: 44ch; margin: 0 auto 26px; }
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+footer {
+  border-top: 1px solid var(--line);
+  padding: 48px 0 24px;
+  font-size: 0.9rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 32px;
+  padding-bottom: 32px;
+}
+
+.footer-col h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.footer-col p {
+  opacity: 0.75;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.footer-col a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer-col a:hover {
+  color: var(--purple);
+}
+
+.footer-logo {
+  font-family: 'Fraunces', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.footer-logo span { color: var(--purple); }
+
+.footer-tagline {
+  opacity: 0.7;
+  margin-bottom: 16px;
+}
+
+.tiktok-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--black);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.tiktok-link:hover { color: var(--purple); }
+
+.footer-bottom {
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
+@media (max-width: 780px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+/* =====================================================
+   FLOATING "CHAT WITH STONES" BUTTON (bottom-right, always visible)
+   ===================================================== */
+#chat-toggle {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 100;
+  background: var(--purple);
+  color: var(--paper);
+  border: none;
+  border-radius: 30px;
+  padding: 14px 22px;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 0 10px 24px rgba(91,44,130,0.35);
+}
